@@ -1,9 +1,9 @@
-import {getRepository} from 'typeorm';
+import { getRepository } from 'typeorm';
 import { hash } from 'bcryptjs';
 
-import AppError from '../errors/AppError';
+import AppError from '@shared/errors/AppError';
 
-import User from '../models/User';
+import User from '../infra/typeorm/entities/User';
 
 interface Request {
   name: string;
@@ -16,7 +16,7 @@ class CreateUserService {
     const userRepository = getRepository(User);
 
     const checkUserExists = await userRepository.findOne({
-      where: {email}
+      where: { email }
     });
 
     if (checkUserExists) {
@@ -26,7 +26,7 @@ class CreateUserService {
     const hashedPassword = await hash(password, 8);
 
     const user = userRepository.create({
-      name, 
+      name,
       email,
       password: hashedPassword
     });

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 
-import AppError from '../errors/AppError';
+import AppError from '../../../errors/AppError';
 
 import authConfig from '../config/auth';
 
@@ -12,8 +12,8 @@ interface TokenPayload {
 }
 
 export default function ensureAuthenticated(
-  request: Request, 
-  response: Response, 
+  request: Request,
+  response: Response,
   next: NextFunction
 ): void {
   const authHeader = request.headers.authorization;

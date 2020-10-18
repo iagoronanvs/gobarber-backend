@@ -32,7 +32,9 @@
         "ts": "never"
       }
     ],
-    "camelcase": "off"
+    "camelcase": "off",
+    "class-methods-use-this": "off",
+    "no-useless-constructor": "off"
   },
   "settings": {
     "import/resolver": {

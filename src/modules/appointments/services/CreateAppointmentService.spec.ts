@@ -3,7 +3,7 @@ import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRe
 import CreateAppointmentService from './CreateAppointmentService';
 
 describe('CreateAppointment', () => {
-  it('shold be able to create a new appointment', async () => {
+  it('should be able to create a new appointment', async () => {
     const fakeAppointmentsRepository = new FakeAppointmentsRepository();
     const createAppointmentService = new CreateAppointmentService(
       fakeAppointmentsRepository,
@@ -18,7 +18,7 @@ describe('CreateAppointment', () => {
     expect(appointment.provider_id).toBe('123123123');
   });
 
-  it('shold not be able to create two appointments on the same time', async () => {
+  it('should not be able to create two appointments on the same time', async () => {
     const fakeAppointmentsRepository = new FakeAppointmentsRepository();
     const createAppointmentService = new CreateAppointmentService(
       fakeAppointmentsRepository,

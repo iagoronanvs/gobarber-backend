@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import AuthenticateUserService from '@modules/users/services/AuthenticateUserService';
@@ -11,7 +11,7 @@ export default class SessionsController {
 
     const { user, token } = await authenticateUser.execute({
       email,
-      password
+      password,
     });
 
     delete user.password;

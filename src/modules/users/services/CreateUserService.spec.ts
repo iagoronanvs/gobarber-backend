@@ -5,15 +5,20 @@ import CreateUserService from './CreateUserService';
 
 const fakeHashProvider = new FakeHashProvider();
 
-describe('CreateUser', () => {
-  it('should be able to create a new appointment', async () => {
-    const fakeUsersRepository = new FakeUsersRepository();
+let fakeUsersRepository: FakeUsersRepository;
+let createUserService: CreateUserService;
 
-    const createUserService = new CreateUserService(
+describe('CreateUser', () => {
+  beforeEach(() => {
+    fakeUsersRepository = new FakeUsersRepository();
+
+    createUserService = new CreateUserService(
       fakeUsersRepository,
       fakeHashProvider,
     );
+  });
 
+  it('should be able to create a new appointment', async () => {
     const user = await createUserService.execute({
       name: 'Jhon Doe',
       email: 'jhon@example.com',
@@ -25,12 +30,6 @@ describe('CreateUser', () => {
   });
 
   it('should not be able to create a new user with same email', async () => {
-    const fakeUsersRepository = new FakeUsersRepository();
-    const createUserService = new CreateUserService(
-      fakeUsersRepository,
-      fakeHashProvider,
-    );
-
     await createUserService.execute({
       name: 'Jhon Doe',
       email: 'jhon@example.com',

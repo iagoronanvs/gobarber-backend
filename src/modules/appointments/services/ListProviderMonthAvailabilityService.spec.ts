@@ -15,19 +15,20 @@ describe('ListProviderMonthAvailability', () => {
   });
 
   it('should be able to list the providers', async () => {
+    const hours = Array.from({ length: 10 }, (_, index) => {
+      return index + 8;
+    });
+
+    hours.map(async hour => {
+      await fakeAppointmentsRepository.create({
+        provider_id: 'user',
+        date: new Date(2020, 10, 20, hour, 0, 0),
+      });
+    });
+
     await fakeAppointmentsRepository.create({
       provider_id: 'user',
       date: new Date(2020, 9, 11, 8, 0, 0),
-    });
-
-    await fakeAppointmentsRepository.create({
-      provider_id: 'user',
-      date: new Date(2020, 10, 11, 8, 0, 0),
-    });
-
-    await fakeAppointmentsRepository.create({
-      provider_id: 'user',
-      date: new Date(2020, 10, 20, 10, 0, 0),
     });
 
     await fakeAppointmentsRepository.create({
@@ -53,7 +54,7 @@ describe('ListProviderMonthAvailability', () => {
         },
         {
           day: 21,
-          available: false,
+          available: true,
         },
         {
           day: 22,

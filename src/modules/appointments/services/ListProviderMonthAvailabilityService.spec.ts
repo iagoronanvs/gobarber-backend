@@ -22,17 +22,20 @@ describe('ListProviderMonthAvailability', () => {
     hours.map(async hour => {
       await fakeAppointmentsRepository.create({
         provider_id: 'user',
+        user_id: 'user',
         date: new Date(2020, 10, 20, hour, 0, 0),
       });
     });
 
     await fakeAppointmentsRepository.create({
       provider_id: 'user',
+      user_id: 'user',
       date: new Date(2020, 9, 11, 8, 0, 0),
     });
 
     await fakeAppointmentsRepository.create({
       provider_id: 'user',
+      user_id: 'user',
       date: new Date(2020, 10, 21, 8, 0, 0),
     });
 

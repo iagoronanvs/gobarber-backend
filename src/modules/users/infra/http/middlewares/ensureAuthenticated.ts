@@ -13,12 +13,12 @@ interface TokenPayload {
 export default function ensureAuthenticated(
   request: Request,
   response: Response,
-  next: NextFunction
+  next: NextFunction,
 ): void {
   const authHeader = request.headers.authorization;
 
   if (!authHeader) {
-    throw new AppError("JWT token is missing.", 401);
+    throw new AppError('JWT token is missing.', 401);
   }
 
   const [, token] = authHeader.split(' ');
@@ -29,12 +29,11 @@ export default function ensureAuthenticated(
     const { sub } = decoded as TokenPayload;
 
     request.user = {
-      id: sub
+      id: sub,
     };
 
     return next();
   } catch {
-    throw new AppError("Invalid JWT token.", 401);
+    throw new AppError('Invalid JWT token.', 401);
   }
-
 }

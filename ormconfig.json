@@ -21,9 +21,9 @@
     "name": "mongo",
     "type": "mongodb",
     "host": "localhost",
-    "port": "27017",
+    "port": 27017,
     "database": "gobarber",
-    "useEnifiedTopology": true,
+    "useUnifiedTopology": true,
     "entities": [
       "./src/modules/**/infra/typeorm/schemas/*.ts"
     ]

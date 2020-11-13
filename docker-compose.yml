@@ -3,9 +3,9 @@ version: "3.1"
 
 services:
   db:
+    container_name: postgres_db
     image: postgres
     restart: always
-    container_name: postgres_db
     ports:
       - "5432:5432"
     environment:
@@ -14,8 +14,11 @@ services:
       POSTGRES_PASSWORD: sandbox
 
   mongo:
+    container_name: gobarber_mongo
     image: mongo
     restart: always
+    ports:
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: sandbox
       MONGO_INITDB_ROOT_PASSWORD: sandbox

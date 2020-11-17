@@ -13,6 +13,14 @@ services:
       POSTGRES_USER: sandbox
       POSTGRES_PASSWORD: sandbox
 
+  redis:
+    container_name: gobarber_redis
+    image: 'bitnami/redis:latest'
+    ports:
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+
   mongo:
     container_name: gobarber_mongo
     image: mongo
@@ -24,6 +32,7 @@ services:
     #   MONGO_INITDB_ROOT_PASSWORD: sandbox
 
   mongo-express:
+    container_name: gobarber_mongo_express
     image: mongo-express
     restart: always
     ports:
